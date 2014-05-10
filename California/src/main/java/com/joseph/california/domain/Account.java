@@ -93,7 +93,7 @@ public class Account implements Serializable {
 
     @Override
     public String toString() {
-        return "com.kabaso.askweb.domain.Account[ id=" + id + " ]";
+        return "com.joseph.california.domain.Account[ id=" + id + " ]";
     }
     
 }

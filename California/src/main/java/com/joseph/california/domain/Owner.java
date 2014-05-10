@@ -7,60 +7,48 @@
 package com.joseph.california.domain;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 /**
  *
- * @author BradleyJoseph
+ * @author Bradley
  */
 @Entity
-public class Club implements Serializable {
+public class Owner implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String name;
-
-    private Club(Builder builder) {
-       id = builder.id;
-       name= builder.name;
-    }
-
-    private Club() {
-    }
+    private String firstname;
+    private String lastname;
+    private int age;
+    @Column(unique = true)
+    private String email;
+    @Embedded
+    private Contact contact;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "person_id")
+    List<Account> accounts;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "person_id")
+    List<Horse> horse;
     
-    public static class Builder{
-        private Long id;
-        private String name;
-
-        public Builder(String name) {
-            this.name = name;
-        }
-        
-        public Builder id(Long value){
-            this. id = value;
-            return this;
-        }
-        
-        public Club build(){
-            return new Club(this);
-        }
-        
-    }
-
     public Long getId() {
         return id;
     }
 
-  
-    public String getName() {
-        return name;
+    public void setId(Long id) {
+        this.id = id;
     }
-  
-    
 
     @Override
     public int hashCode() {
@@ -72,10 +60,10 @@ public class Club implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Club)) {
+        if (!(object instanceof Owner)) {
             return false;
         }
-        Club other = (Club) object;
+        Owner other = (Owner) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -84,7 +72,7 @@ public class Club implements Serializable {
 
     @Override
     public String toString() {
-        return "com.joseph.california.domain.Club[ id=" + id + " ]";
+        return "com.joseph.california.domain.Owner[ id=" + id + " ]";
     }
     
 }

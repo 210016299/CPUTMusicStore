@@ -180,7 +180,7 @@ public class Person implements Serializable {
 
     @Override
     public String toString() {
-        return "com.kabaso.askweb.domain.Person[ id=" + id + " ]";
+        return "com.joseph.california.domain.Person[ id=" + id + " ]";
     }
 
 }

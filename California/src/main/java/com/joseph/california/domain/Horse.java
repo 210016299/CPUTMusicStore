@@ -6,7 +6,9 @@
 
 package com.joseph.california.domain;
 
+import com.joseph.california.domain.Person.Builder;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,53 +16,60 @@ import javax.persistence.Id;
 
 /**
  *
- * @author BradleyJoseph
+ * @author Bradley
  */
 @Entity
-public class Club implements Serializable {
+public class Horse implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String name;
+    private String firstname;
 
-    private Club(Builder builder) {
-       id = builder.id;
-       name= builder.name;
+    public String getFirstname() {
+        return firstname;
     }
 
-    private Club() {
+    public String getLastname() {
+        return lastname;
     }
+
+    public int getAge() {
+        return age;
+    }
+    private final String lastname;
+    private int age;
     
-    public static class Builder{
-        private Long id;
-        private String name;
-
-        public Builder(String name) {
-            this.name = name;
+    private Horse(Builder builder) {
+        id = builder.id;
+        firstname = builder.firstname;
+        lastname = builder.lastname;
         }
-        
-        public Builder id(Long value){
-            this. id = value;
-            return this;
-        }
-        
-        public Club build(){
-            return new Club(this);
-        }
-        
-    }
 
     public Long getId() {
         return id;
+            
     }
-
-  
-    public String getName() {
-        return name;
-    }
-  
     
+    public static class Builder{
+    private Long id;
+    private String firstname;
+    private String lastname;
+
+        public Builder(String firstname, String lastname) {
+            this.firstname = firstname;
+            this.lastname = lastname;
+        }
+        
+        public Horse build(){
+            return new Horse(this);
+        }
+    }
+         
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     @Override
     public int hashCode() {
@@ -72,10 +81,10 @@ public class Club implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Club)) {
+        if (!(object instanceof Horse)) {
             return false;
         }
-        Club other = (Club) object;
+        Horse other = (Horse) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -84,7 +93,6 @@ public class Club implements Serializable {
 
     @Override
     public String toString() {
-        return "com.joseph.california.domain.Club[ id=" + id + " ]";
+        return "com.joseph.california.domain.Horse[ id=" + id + " ]";
     }
-    
 }

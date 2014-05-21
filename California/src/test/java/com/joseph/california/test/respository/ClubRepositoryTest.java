@@ -7,7 +7,9 @@
 package com.joseph.california.test.respository;
 
 import com.joseph.california.app.conf.ConnectionConfig;
+import com.joseph.california.domain.Club;
 import com.joseph.california.domain.Customer;
+import com.joseph.california.respository.ClubRepository;
 import com.joseph.california.respository.CustomerRepository;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -23,13 +25,13 @@ import org.testng.annotations.Test;
  * @author bradleyJoseph
  */
 
-public class CustomerRepositoryTest {
+public class ClubRepositoryTest {
     public static ApplicationContext ctx;
     private Long id;
 
-    private CustomerRepository repo;
+    private ClubRepository repo;
     
-    public CustomerRepositoryTest() {
+    public ClubRepositoryTest() {
     }
 
     // TODO add test methods here.
@@ -37,11 +39,11 @@ public class CustomerRepositoryTest {
     //
      @Test
      public void hello() {
-         repo = ctx.getBean(CustomerRepository.class);
-         Customer cust = new Customer();
-         cust.setName("Hello");
-         repo.save(cust);
-         Assert.assertNotNull(cust);
+         repo = ctx.getBean(ClubRepository.class);
+         Club club = new Club();
+         club.getName();
+         repo.save(club);
+         Assert.assertNotNull(club);
      
      }
 

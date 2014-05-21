@@ -6,14 +6,16 @@
 
 package com.joseph.california.respository;
 
-import com.joseph.california.domain.Customer;
 import com.joseph.california.domain.Owner;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 
 /**
  *
  * @author Bradley
  */
-public interface OwnerRepository extends JpaRepository<Owner, Long>{{
+@Repository //important annotation
+public interface OwnerRepository extends JpaRepository<Owner, Long>{
     
 }

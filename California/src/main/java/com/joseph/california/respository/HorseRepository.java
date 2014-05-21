@@ -6,17 +6,16 @@
 
 package com.joseph.california.respository;
 
-import com.joseph.california.domain.Person;
-import java.io.Serializable;
+import com.joseph.california.domain.Horse;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 
 /**
  *
- * @author BradleyJoseph
+ * @author Bradley
  */
 @Repository
-public interface PersonRepository extends JpaRepository<Person, Long>{
+public interface HorseRepository extends JpaRepository<Horse, Long>{
     
 }

@@ -29,12 +29,33 @@ public class Owner implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String firstname;
+    private String sex;
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
     private String lastname;
     private int age;
     @Column(unique = true)
     private String email;
     @Embedded
     private Contact contact;
+
+    public String getFirstname() {
+        return firstname;
+    }
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "person_id")
     List<Account> accounts;

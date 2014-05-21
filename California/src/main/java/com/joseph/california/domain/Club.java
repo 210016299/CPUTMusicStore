@@ -24,12 +24,12 @@ public class Club implements Serializable {
     private Long id;
     private String name;
 
-    private Club(Builder builder) {
+    public Club(Builder builder) {
        id = builder.id;
        name= builder.name;
     }
 
-    private Club() {
+    public Club() {
     }
     
     public static class Builder{

@@ -26,6 +26,7 @@ public class Horse implements Serializable {
     private Long id;
     private String firstname;
 
+    
     public String getFirstname() {
         return firstname;
     }
@@ -37,9 +38,12 @@ public class Horse implements Serializable {
     public int getAge() {
         return age;
     }
-    private final String lastname;
+    private String lastname;
     private int age;
-    
+   
+     public Horse() {
+    }
+     
     private Horse(Builder builder) {
         id = builder.id;
         firstname = builder.firstname;

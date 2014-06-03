@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.joseph.california.app.conf;
+package com.joseph.california.test;
 
+import com.joseph.california.Application;
 import javax.sql.DataSource;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.context.annotation.Bean;
@@ -16,7 +17,7 @@ import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -25,10 +26,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @author Bradley
  */
 @Configuration
-@ComponentScan("com.joseph.california")
+
 @EnableTransactionManagement
+@ComponentScan(basePackageClasses = Application.class, excludeFilters = @ComponentScan.Filter({Controller.class, Configuration.class}))
 @EnableJpaRepositories(basePackages = "com.joseph.california.respository")
-public class ConnectionConfig {
+public class ConnectionConfigTest {
 
     @Bean
     public DataSource dataSource() {
